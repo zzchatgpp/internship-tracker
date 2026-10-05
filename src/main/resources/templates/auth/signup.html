@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Create account | Internship Tracker</title><link rel="stylesheet" th:href="@{/css/app.css}"></head>
+<body class="auth-page"><main class="auth-shell">
+<section class="auth-copy"><a class="brand auth-brand" th:href="@{/login}">Internship Tracker</a><p class="eyebrow">Your private workspace</p><h1>Turn a messy job search into a clear pipeline.</h1><p class="lead">Your applications are isolated to your account and can only be accessed after authentication.</p><div class="auth-feature-list"><span>Search and filter applications</span><span>Track every stage transition</span><span>See pipeline analytics</span></div></section>
+<section class="card auth-card"><p class="eyebrow">Get started</p><h2>Create your account</h2><p class="muted">All fields below are required.</p>
+<form th:action="@{/signup}" th:object="${signupRequest}" method="post" novalidate><div class="alert error" th:if="${#fields.hasGlobalErrors()}"><div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div></div>
+<div class="field"><label for="name">Name</label><input id="name" th:field="*{name}" type="text" required><small class="field-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small></div>
+<div class="field"><label for="email">Email</label><input id="email" th:field="*{email}" type="email" required><small class="field-error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small></div>
+<div class="field"><label for="password">Password</label><input id="password" th:field="*{password}" type="password" required><small class="field-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small></div>
+<div class="field"><label for="confirmPassword">Confirm password</label><input id="confirmPassword" th:field="*{confirmPassword}" type="password" required><small class="field-error" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></small></div>
+<button class="button auth-submit" type="submit">Create account</button></form><p class="auth-footer">Already have an account? <a th:href="@{/login}">Sign in</a></p></section>
+</main></body></html>
